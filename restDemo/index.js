@@ -6,6 +6,7 @@ app.get('/makanan', (req,res) =>{
 })
 
 app.post('/makanan', (req, res)=>{
+    console.log(req.body)
     res.send("dapet makanan dari post")
 })
 
