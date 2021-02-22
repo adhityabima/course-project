@@ -10,18 +10,22 @@ app.use(bodyParser.json());
 
 const listMakanan = [
     {
+        id: 1,
         namaMakanan: "mie goreng",
         deskripsi: "mie yang di goreng"
     },
     {
+        id: 2,
         namaMakanan: "mie rebus",
         deskripsi: "mie yang di rebus"
     },
     {
+        id: 3,
         namaMakanan: "nasi goreng",
         deskripsi: "nasi yang di goreng"
     },
     {
+        id: 4,
         namaMakanan: "ayam goreng",
         deskripsi: "ayam yang di goreng"
     }
@@ -39,6 +43,12 @@ app.post('/semuamakanan', (req, res)=>{
     const {namaMakanan, deskripsi} = req.body;
     listMakanan.push({namaMakanan, deskripsi});
     res.redirect('/semuamakanan');
+})
+
+app.get('/semuamakanan/:id', (req, res)=>{
+    const { id } = req.params;
+    const detilmakanan = listMakanan.find(makan => makan.id === parseInt(id))
+    res.render('semuamakanan/detail', {detilmakanan})
 })
 
 app.get('/makanan', (req, res) =>{
